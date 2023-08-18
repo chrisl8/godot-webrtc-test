@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbs4s4ea2n473"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dclh1"]
+
+[node name="Scene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.882336, -0.469779, 0.0281115, 0.412835, 0.801296, 0.433004, -0.225942, -0.37045, 0.900953, 0.00226158, 1.75047, 3.10397)
+current = true
+fov = 56.8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_dclh1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.60143, 3.52884)
+omni_range = 4096.0
+omni_attenuation = 0.0824693

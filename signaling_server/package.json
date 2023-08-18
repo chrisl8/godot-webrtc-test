@@ -1,0 +1,12 @@
+{
+  "name": "signaling_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "dependencies": {
+    "ws": "^8.13.0"
+  },
+  "author": "Fabio Alessandrelli",
+  "license": "MIT"
+}

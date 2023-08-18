@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bemt6dotly4k3"]
+
+[ext_resource type="Script" path="res://main-user-client/main.gd" id="1_rnv84"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_rnv84")
+run_server_in_debug = true
+server_password = "SuperSecretPassword"
+
+[node name="Level" type="Node" parent="."]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scene.tscn")
+spawn_path = NodePath("../Level")
