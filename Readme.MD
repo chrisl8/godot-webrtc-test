@@ -22,3 +22,6 @@ from various bits and rush to create a proof-of-concept.
 The code is based on code from around the Internet.
 
 The blame is all mine, the credit is all others.
+
+A big thanks to this repo, which was the inspiration for much of this code, and deserves credit for anything brilliant in here:
+https://github.com/TuysuzTavsan/GodotMultiplayerDemo
