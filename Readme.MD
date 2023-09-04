@@ -1,7 +1,6 @@
 # Godot WebRTC Test
 
-This repo is to demonstrate that I was unable to make MultiplayerSpawner work with WebRTC in Godot 4.1.1,
-while they do work with ENet.
+This repo is to demonstrate WebRTC MultiPlayer in Godot 4.1.1 with a Node.js based signalling server.
 
 To run the code you must also use Node.js to run the signal-server.
 ```shell
@@ -9,12 +8,10 @@ cd signaling_server
 node server.js
 ```
 
-To switch between WebRTC and ENet, edit the following lines in `User.gd`:
- - 29 & 30
- - 77 & 78
- - 80 & 81
- - 83 & 84
- - 94
+Originally this was used as a demonstration in an Issue filed for Godot which you can see here:  
+https://github.com/godotengine/godot/issues/80743  
+There is some good discussion there about how to make this work and possible other ideas for it.  
+A big thank you to those who contributed to that discussion and provided example code to ultimately get this working.  
 
 I apologize for the rough edges of this code. It was patched together
 from various bits and rush to create a proof-of-concept.
