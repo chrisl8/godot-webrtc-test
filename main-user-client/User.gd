@@ -74,7 +74,21 @@ func client_listener_init():
 
 
 func init_connection():
-	rtc_peer = WebRTCMultiplayerPeer.new() # Comment to disable WebRTC
+	for peer_id in peers.keys():
+		if connection_list.has(peer_id):
+			continue  # This peer has already been initiated, skipping
+		var connection := WebRTCPeerConnection.new()
+		connection.initialize({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
+		connection.session_description_created.connect(session_created.bind(connection))
+		connection.ice_candidate_created.connect(ice_created.bind(connection))
+		connection_list[peer_id] = connection
+		rtc_peer.add_peer(connection, peer_id)  # Comment to disable ENet
+
+	network_initialized = true
+
+
+func init_rtc_peer():
+	rtc_peer = WebRTCMultiplayerPeer.new()  # Comment to disable WebRTC
 	#rtc_peer = ENetMultiplayerPeer.new() # Comment to disale ENet
 	if User.is_server:
 		rtc_peer.create_mesh(ID) # Comment to disable WebRTC
@@ -83,19 +97,7 @@ func init_connection():
 		rtc_peer.create_mesh(ID) # Comment to disable WebRTC
 		#rtc_peer.create_client('127.0.0.1', 8080)
 
-	connection_list.clear()
-
-	for peer_id in peers.keys():
-		var connection := WebRTCPeerConnection.new()
-		connection.initialize({"iceServers": [ { "urls": ["stun:stun.l.google.com:19302"]}]})
-		connection.session_description_created.connect(session_created.bind(connection))
-		connection.ice_candidate_created.connect(ice_created.bind(connection))
-		connection_list[peer_id] = connection
-		rtc_peer.add_peer(connection, peer_id) # Comment to disable ENet
-
 	get_tree().get_multiplayer().multiplayer_peer = rtc_peer
-
-	network_initialized = true
 
 
 func session_created(type: String, sdp: String, connection):

@@ -101,7 +101,8 @@ func parse_msg():
 	if type == Message.USER_INFO:
 		User.user_name = data
 		User.ID = id
-		print("Received User name = %s ID# %s" %[data, id])
+		print("Received User name = %s ID# %s" % [data, id])
+		User.init_rtc_peer()
 		user_name_feedback_received.emit()
 		return
 
